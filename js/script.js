@@ -31,6 +31,7 @@ function sendRequestToServer(ricerca) {
 }
 
 function stampaFilm(listaOggetti) {
+  $(".container").html("");
   for (var key in listaOggetti) {
     var source = $("#entry-template").html();
     var template = Handlebars.compile(source);
