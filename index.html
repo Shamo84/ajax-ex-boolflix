@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>BoolFlix</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js" integrity="sha256-N5vR06TQIR+YD8oS0yndB1pu/EITeijW52dwezEq7/g=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+      <input id="input" type="text" name="" value="" placeholder="Inserisci il titolo di un film">
+      <button id="search" type="button" name="button">Cerca</button>
+      <div class="container">
+
+      </div>
+      <script id="entry-template" class="hidden" type="text/x-handlebars-template">
+        <ul class="movie">
+          <li>Titolo: <span>{{title}}</span></li>
+          <li>Titolo Originale: <span>{{originalTitle}}</span></li>
+          <li>Lingua Originale: <span>{{language}}</span></li>
+          <li>Voto Medio: <span>{{rating}}</span></li>
+        </ul>
+      </script>
+        <script src="js/script.js" charset="utf-8"></script>
+    </body>
+</html>
