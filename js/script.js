@@ -68,6 +68,7 @@ function stampaFilm(listaOggetti) {
     var context = {
       poster: listaOggetti[key].poster_path,
       title: listaOggetti[key].title,
+      releaseYear: moment(listaOggetti[key].release_date, "YYYY-MM-DD").format("YYYY"),
       originalTitle: listaOggetti[key].original_title,
       language: listaOggetti[key].original_language,
       rating: listaOggetti[key].vote_average,
@@ -84,6 +85,7 @@ function stampaSerie(listaOggetti) {
     var context = {
       poster: listaOggetti[key].poster_path,
       title: listaOggetti[key].name,
+      releaseYear: moment(listaOggetti[key].first_air_date, "YYYY-MM-DD").format("YYYY"),
       originalTitle: listaOggetti[key].original_name,
       language: listaOggetti[key].original_language,
       rating: listaOggetti[key].vote_average,

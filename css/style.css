@@ -4,20 +4,27 @@
   margin: 0;
 }
 
+body {
+  padding: 20px;
+}
+
 ul {
   margin: 5px 0;
-  padding-left: 40px;
+  list-style: none;
 }
 ul.movie {
   margin: 20px 0;
   display: flex;
-  list-style: none;
 }
 
 span, img {
   color: red;
 }
 
+h2.movie-title,
+h2.tvseries-title {
+  background-color: yellowgreen;
+}
 h2, h3 {
   margin: 10px 0;
 }
@@ -25,14 +32,25 @@ h2, h3 {
 .movie li.poster {
   width: 154px;
   height: 231px;
+  margin-right: 20px;
 }
 
 .movie li.poster img {
   max-height: 231px;
 }
+
+.movie li.informazioni h2{
+  display: inline;
+  font-size: 24px;
+}
+.movie li.informazioni li{
+  font-size: 18px;
+}
+
 .fa-star {
   color: gold;
-  font-size: 14px;
+  font-size: 22px;
+  vertical-align: text-bottom;
 }
 
 .container .stars {

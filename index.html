@@ -6,6 +6,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js" integrity="sha256-N5vR06TQIR+YD8oS0yndB1pu/EITeijW52dwezEq7/g=" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
+        <script src="https://momentjs.com/downloads/moment.min.js" charset="utf-8"></script>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
@@ -19,9 +20,10 @@
       <script id="entry-template" class="" type="text/x-handlebars-template">
         <ul class="movie">
           <li class="poster"><img src="https://image.tmdb.org/t/p/w154{{poster}}" alt="poster"></li>
-          <li>Titolo: <span>{{title}} - </span><span class="stars">{{{stars}}}</span>
+          <li class="informazioni"><h2>{{title}} - </h2><span class="stars">{{{stars}}}</span>
             <ul>
               <li>Titolo Originale: <span>{{originalTitle}}</span></li>
+              <li>Anno di uscita: <span>{{releaseYear}}</span></li>
               <li>Lingua Originale: <img class="flag" src="img/{{language}}.png" alt="{{language}}"></li>
               <li>Voto Medio: <span>{{rating}}</span></li>
             </ul>
