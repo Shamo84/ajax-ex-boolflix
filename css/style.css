@@ -4,15 +4,47 @@
   margin: 0;
 }
 
-.hidden {
-  display: none;
-}
-
 ul {
-  margin: 20px 0;
+  margin: 5px 0;
   padding-left: 40px;
 }
+ul.movie {
+  margin: 20px 0;
+  display: flex;
+  list-style: none;
+}
 
-span {
+span, img {
   color: red;
+}
+
+h2, h3 {
+  margin: 10px 0;
+}
+
+.movie li.poster {
+  width: 154px;
+  height: 231px;
+}
+
+.movie li.poster img {
+  max-height: 231px;
+}
+.fa-star {
+  color: gold;
+  font-size: 14px;
+}
+
+.container .stars {
+  white-space: nowrap;
+}
+
+.container img.flag {
+  height: 19px;
+  vertical-align: middle;
+  border: 1px solid lightgrey;
+}
+
+.hidden {
+  display: none;
 }

@@ -5,22 +5,29 @@
         <title>BoolFlix</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.2/handlebars.js" integrity="sha256-N5vR06TQIR+YD8oS0yndB1pu/EITeijW52dwezEq7/g=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js" integrity="sha256-MAgcygDRahs+F/Nk5Vz387whB4kSK9NXlDN3w58LLq0=" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
       <input id="input" type="text" name="" value="" placeholder="Inserisci il titolo di un film">
       <button id="search" type="button" name="button">Cerca</button>
-      <div class="container">
-
-      </div>
-      <script id="entry-template" class="hidden" type="text/x-handlebars-template">
+      <h3 id="cercato" class="hidden">hai cercato: "<span></span>"</h3>
+      <h2 class="movie-title hidden">Movies</h2>
+      <div class="movie container"></div>
+      <h2 class="tvseries-title hidden">TV Series</h2>
+      <div class="tvseries container"></div>
+      <script id="entry-template" class="" type="text/x-handlebars-template">
         <ul class="movie">
-          <li>Titolo: <span>{{title}}</span></li>
-          <li>Titolo Originale: <span>{{originalTitle}}</span></li>
-          <li>Lingua Originale: <span>{{language}}</span></li>
-          <li>Voto Medio: <span>{{rating}}</span></li>
+          <li class="poster"><img src="https://image.tmdb.org/t/p/w154{{poster}}" alt="poster"></li>
+          <li>Titolo: <span>{{title}} - </span><span class="stars">{{{stars}}}</span>
+            <ul>
+              <li>Titolo Originale: <span>{{originalTitle}}</span></li>
+              <li>Lingua Originale: <img class="flag" src="img/{{language}}.png" alt="{{language}}"></li>
+              <li>Voto Medio: <span>{{rating}}</span></li>
+            </ul>
+          </li>
         </ul>
       </script>
-        <script src="js/script.js" charset="utf-8"></script>
+      <script src="js/script.js" charset="utf-8"></script>
     </body>
 </html>
