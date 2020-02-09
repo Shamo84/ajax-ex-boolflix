@@ -10,13 +10,17 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-      <input id="input" type="text" name="" value="" placeholder="Inserisci il titolo di un film">
+      <input id="input" type="text" name="input" value="" placeholder="Inserisci il titolo di un film">
       <button id="search" type="button" name="button">Cerca</button>
       <h3 id="cercato" class="hidden">hai cercato: "<span></span>"</h3>
-      <h2 class="movie-title hidden">Movies</h2>
-      <div class="movie container"></div>
-      <h2 class="tvseries-title hidden">TV Series</h2>
-      <div class="tvseries container"></div>
+      <div>
+        <h2 class="movie-title hidden">Movies</h2>
+        <div class="movie container"></div>
+      </div>
+      <div>
+        <h2 class="tvseries-title hidden">TV Series</h2>
+        <div class="tvseries container"></div>
+      </div>
       <script id="entry-template" class="" type="text/x-handlebars-template">
         <ul class="movie">
           <li class="poster"><img src="https://image.tmdb.org/t/p/w154{{poster}}" alt="poster"></li>

@@ -14,6 +14,7 @@ $(document).ready(function() {
 function sendRequestToServer(ricerca) {
   if ($("#input").val() != "") {
     $("#input").val("");
+    $(".movie.container").html("");
     $("#cercato > span").text(ricerca);
     $("#cercato").removeClass("hidden");
     $.ajax({
@@ -25,7 +26,6 @@ function sendRequestToServer(ricerca) {
         language: "it-IT"
       },
       success: function(risposta) {
-        $(".movie.container").html("");
         if (risposta.total_results > 0) {
           $("h2.movie-title").removeClass("hidden");
           $("h2.tvseries-title").removeClass("hidden");
@@ -100,10 +100,10 @@ function printStars(voto) {
   var starsNumber = Math.round(voto / 2);
   var stars = "";
   for (var i = 1; i <= starsNumber; i++) {
-    stars += '<i class="fas fa-star"></i>'
+    stars += '&#9733;'
   }
   for (var i = 5; i > starsNumber; i--) {
-    stars += '<i class="far fa-star"></i>'
+    stars += '&#9734;'
   }
   return stars;
 }
