@@ -97,7 +97,7 @@ function stampaSerie(listaOggetti) {
 }
 
 function printStars(voto) {
-  var starsNumber = Math.round(voto / 2);
+  var starsNumber = Math.ceil(voto / 2);
   var stars = "";
   for (var i = 1; i <= starsNumber; i++) {
     stars += '&#9733;'
