@@ -3,13 +3,13 @@
   padding: 0;
   margin: 0;
   color: white;
-
 }
 
 body {
   padding: 20px;
   background-color: black;
   margin-top: 100px;
+  min-width: 1000px;
 }
 
 header {
@@ -63,6 +63,7 @@ main {
 .container {
   display: flex;
   flex-wrap: wrap;
+  font-size: 30px;
 }
 
 select,
@@ -72,21 +73,20 @@ option {
   height: 32px;
   font-size: 20px;
   border-radius: 4px;
+  margin: 10px 0;
 }
 ul {
   list-style: none;
 }
 div.show {
-  margin: 20px 10px;
-  height: 36vw;
-  width: calc(25% - 20px);
+  margin: 10px 5px;
+  width: calc(25% - 10px);
   position: relative;
 }
 
 div.show:hover .informazioni {
   display: block;
   overflow-y: auto;
-
 }
 
 span {
@@ -109,6 +109,7 @@ h2, h3 {
   display: flex;
   align-items: center;
   border: 1px solid #555555;
+  border-radius: 8px;
 }
 
 .show .poster img{
@@ -116,6 +117,7 @@ h2, h3 {
   width: 100%;
   text-align: center;
   font-size: 24px;
+  border-radius: 8px;
 }
 
 .show ul.informazioni {
