@@ -139,7 +139,6 @@ function getGenres(id, string) {
         if (!generiFilm.includes(risposta.genres[key].name)) {
           generiFilm.push(risposta.genres[key].name);
           printGenresinSelect("movie-select", risposta.genres[key].name);
-
         }
       } else {
         if (!generiTv.includes(risposta.genres[key].name)) {
@@ -155,6 +154,7 @@ function getGenres(id, string) {
     }
   })
 }
+
 function printGenresinSelect(string, name) {
   var source = $("#entry-template-2").html();
   var template = Handlebars.compile(source);
@@ -164,6 +164,7 @@ function printGenresinSelect(string, name) {
   var html = template(context);
   $("#" + string).append(html);
 }
+
 function filtraPerGenere(string, select) {
   var choice = $(select).val();
   $(string).children(".show").each(function() {
