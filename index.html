@@ -19,15 +19,21 @@
         <h3 id="cercato" class="hidden">hai cercato: "<span></span>"</h3>
         <div>
           <h2 class="movie-title hidden">Movies</h2>
+          <select id="movies-select" name="select">
+            <option value="volvo">Volvo</option>
+          </select>
           <div class="movie container"></div>
         </div>
         <div>
           <h2 class="tvseries-title hidden">TV Series</h2>
+          <select id="tv-select" name="select">
+            <option value="volvo">Volvo</option>
+          </select>
           <div class="tvseries container"></div>
         </div>
       </main>
       <script id="entry-template" class="" type="text/x-handlebars-template">
-        <div class="show">
+        <div class="show" id="{{id}}">
           <div class="poster" >
             <img src="https://image.tmdb.org/t/p/w342{{poster}}" alt="{{originalTitle}}{{originalName}}">
           </div>
@@ -37,10 +43,14 @@
             <li>Anno di uscita: <span>{{releaseYear}}</span></li>
             <li>Lingua Originale: <img class="flag" src="img/{{language}}.png" alt="{{language}}"></li>
             <li>Voto Medio: <span class="stars">{{{stars}}}</span></li>
-            <li>Main Cast: <span class="cast">{{{cast}}}</span></li>
+            <li>Generi: <span class="generi"></span></li>
+            <li>Main Cast: <span class="cast"></span></li>
             <li>Trama: <span>{{trama}}</span></li>
           </ul>
         </div>
+      </script>
+      <script id="entry-template-2" class="" type="text/x-handlebars-template">
+        <option value="{{genere}}">{{genere}}</option>
       </script>
       <script src="js/script.js" charset="utf-8"></script>
     </body>
