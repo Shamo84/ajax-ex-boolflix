@@ -9,7 +9,6 @@ $(document).ready(function() {
     sendRequestToServer(ricerca, moviesUrl, movieContainer);
     sendRequestToServer(ricerca, seriesUrl, seriesContainer);
     $("#input").val("");
-
   });
   $("#input").keyup(function(event) {
     if (event.which == 13) {
@@ -67,7 +66,8 @@ function stampa(listaOggetti, container) {
       originalName: listaOggetti[key].original_name,
       language: listaOggetti[key].original_language,
       stars: printStars(listaOggetti[key].vote_average),
-      trama: listaOggetti[key].overview
+      trama: listaOggetti[key].overview,
+      cast: getActors(listaOggetti[key].id)
     };
     if (context.name == undefined) {
       context.releaseYear = moment(listaOggetti[key].release_date, "YYYY-MM-DD").format("YYYY");
@@ -89,4 +89,25 @@ function printStars(voto) {
     stars += '&#9734;'
   }
   return stars;
+}
+
+function getActors(id) {
+  var listaAttori = "";
+  $.ajax({
+    url: "https://api.themoviedb.org/3/movie/" + id + "/credits",
+    method: "GET",
+    data: {
+      api_key: "b1d8c49e5a444b10f55f930d8f4ed091",
+    },
+    success: function(risposta) {
+      for (var i = 0; i < 5; i++) {
+        console.log(risposta.cast[i].name);
+        listaAttori += risposta.cast[i].name + ", ";
+      }
+      console.log(listaAttori);
+    },
+    error: function functionName() {
+    }
+  })
+  return listaAttori;
 }
