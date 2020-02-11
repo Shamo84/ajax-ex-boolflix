@@ -24,8 +24,8 @@ $(document).ready(function() {
   $("#input").on("blur", function() {
     $(this).attr("placeholder", "Inserisci un titolo");
   });
-  $("#movies-select").on("change", function() {
-    filtraPerGenere(".movie.container", "#movies-select");
+  $("#movie-select").on("change", function() {
+    filtraPerGenere(".movie.container", "#movie-select");
   })
   $("#tv-select").on("change", function() {
     filtraPerGenere(".tvseries.container", "#tv-select");
@@ -35,11 +35,10 @@ $(document).ready(function() {
 function sendRequestToServer(ricerca, url, container, string) {
   if ($("#input").val() != "") {
     container.html("");
-    $("#movies-select").html('<option value="">All</option>');
+    $("#movie-select").html('<option value="">All</option>');
     $("#tv-select").html('<option value="">All</option>');
     generiFilm = [];
     generiTv = [];
-    $("select").removeClass("hidden");
     $("#cercato > span").text(ricerca);
     $("#cercato").removeClass("hidden");
     $.ajax({
@@ -51,12 +50,14 @@ function sendRequestToServer(ricerca, url, container, string) {
         language: "it-IT"
       },
       success: function(risposta) {
+        $("h2.movie-title").removeClass("hidden");
+        $("h2.tvseries-title").removeClass("hidden");
         if (risposta.total_results > 0) {
-          $("h2.movie-title").removeClass("hidden");
-          $("h2.tvseries-title").removeClass("hidden");
           stampa(risposta.results, container, string);
+          $("#" + string + "-select").removeClass("hidden");
         } else {
           container.append("La ricerca non ha prodotto alcun risultato!");
+          $("#" + string + "-select").addClass("hidden");
         }
       },
       error: function functionName() {
@@ -137,7 +138,7 @@ function getGenres(id, string) {
       if (string == "movie") {
         if (!generiFilm.includes(risposta.genres[key].name)) {
           generiFilm.push(risposta.genres[key].name);
-          printGenresinSelect("movies-select", risposta.genres[key].name);
+          printGenresinSelect("movie-select", risposta.genres[key].name);
 
         }
       } else {
