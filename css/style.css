@@ -68,22 +68,28 @@ main {
 select,
 option {
   color: black;
+  width: 150px;
+  height: 32px;
+  font-size: 20px;
+  border-radius: 4px;
 }
 ul {
   list-style: none;
 }
 div.show {
   margin: 20px 10px;
+  height: 36vw;
   width: calc(25% - 20px);
   position: relative;
-  overflow-y: auto;
 }
 
 div.show:hover .informazioni {
   display: block;
+  overflow-y: auto;
+
 }
 
-span, img {
+span {
   color: yellowgreen;
   text-align: justify;
 }
@@ -106,6 +112,7 @@ h2, h3 {
 }
 
 .show .poster img{
+  max-height: 100%;
   width: 100%;
   text-align: center;
   font-size: 24px;
