@@ -10,29 +10,36 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
-      <input id="input" type="text" name="input" value="" placeholder="Inserisci il titolo di un film">
-      <button id="search" type="button" name="button">Cerca</button>
-      <h3 id="cercato" class="hidden">hai cercato: "<span></span>"</h3>
-      <div>
-        <h2 class="movie-title hidden">Movies</h2>
-        <div class="movie container"></div>
-      </div>
-      <div>
-        <h2 class="tvseries-title hidden">TV Series</h2>
-        <div class="tvseries container"></div>
-      </div>
+      <header>
+        <h1>BoolFlix</h1>
+        <input id="input" type="text" name="input" value="" placeholder="Inserisci un titolo">
+        <button id="search" type="button" name="button">Cerca</button>
+      </header>
+      <main>
+        <h3 id="cercato" class="hidden">hai cercato: "<span></span>"</h3>
+        <div>
+          <h2 class="movie-title hidden">Movies</h2>
+          <div class="movie container"></div>
+        </div>
+        <div>
+          <h2 class="tvseries-title hidden">TV Series</h2>
+          <div class="tvseries container"></div>
+        </div>
+      </main>
       <script id="entry-template" class="" type="text/x-handlebars-template">
-        <ul class="movie">
-          <li class="poster"><img src="https://image.tmdb.org/t/p/w154{{poster}}" alt="poster"></li>
-          <li class="informazioni"><h2>{{title}} - </h2><span class="stars">{{{stars}}}</span>
-            <ul>
-              <li>Titolo Originale: <span>{{originalTitle}}</span></li>
-              <li>Anno di uscita: <span>{{releaseYear}}</span></li>
-              <li>Lingua Originale: <img class="flag" src="img/{{language}}.png" alt="{{language}}"></li>
-              <li>Voto Medio: <span>{{rating}}</span></li>
-            </ul>
-          </li>
-        </ul>
+        <div class="show">
+          <div class="poster" >
+            <img src="https://image.tmdb.org/t/p/w342{{poster}}" alt="{{originalTitle}}{{originalName}}">
+          </div>
+          <ul class="informazioni hidden">
+            <li>Titolo: <span>{{title}}{{name}}</span></li>
+            <li>Titolo Originale: <span>{{originalTitle}}{{originalName}}</span></li>
+            <li>Anno di uscita: <span>{{releaseYear}}</span></li>
+            <li>Lingua Originale: <img class="flag" src="img/{{language}}.png" alt="{{language}}"></li>
+            <li>Voto Medio: <span class="stars">{{{stars}}}</span></li>
+            <li>Trama: <span>{{trama}}</span></li>
+          </ul>
+        </div>
       </script>
       <script src="js/script.js" charset="utf-8"></script>
     </body>

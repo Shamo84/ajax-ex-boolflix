@@ -2,61 +2,134 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  color: white;
+
 }
 
 body {
   padding: 20px;
+  background-color: black;
+  margin-top: 100px;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 80px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 100px;
+  border-bottom: 1px solid lightgrey;
+  background-color: black;
+  z-index: 2;
+}
+
+h1 {
+  font-style: italic;
+  flex-grow: 2;
+  font-size: 40px;
+}
+
+#input {
+  border-radius: 8px;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  margin: 0 20px;
+  font-size: 24px;
+  color: black;
+}
+
+#input::placeholder {
+  font-size: 24px;
+}
+
+#search {
+  color: black;
+  width: 70px;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 ul {
-  margin: 5px 0;
   list-style: none;
 }
-ul.movie {
-  margin: 20px 0;
-  display: flex;
+div.show {
+  margin: 20px 10px;
+  width: calc(25% - 20px);
+  position: relative;
+  overflow-y: auto;
+}
+
+div.show:hover .informazioni {
+  display: block;
 }
 
 span, img {
-  color: red;
+  color: yellowgreen;
 }
 
 h2.movie-title,
 h2.tvseries-title {
   background-color: yellowgreen;
+  text-align: center;
 }
 h2, h3 {
   margin: 10px 0;
+  font-size: 28px;
 }
 
-.movie li.poster {
-  width: 154px;
-  height: 231px;
-  margin-right: 20px;
+.show .poster {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid #555555;
 }
 
-.movie li.poster img {
-  max-height: 231px;
-}
-
-.movie li.informazioni h2{
-  display: inline;
+.show .poster img{
+  width: 100%;
+  text-align: center;
   font-size: 24px;
 }
-.movie li.informazioni li{
-  font-size: 18px;
+
+.show ul.informazioni {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px;
+}
+
+.show ul.informazioni li{
+  font-size: 1.4vw;
+  text-align: justify;
 }
 
 .container .stars {
   white-space: nowrap;
   color: gold;
-  font-size: 28px;
+  font-size: 1.9vw;
 }
 
 .container img.flag {
-  height: 19px;
+  height: 1.4vw;
   vertical-align: middle;
-  border: 1px solid lightgrey;
+  border: 1px solid darkgrey;
 }
 
 .hidden {
