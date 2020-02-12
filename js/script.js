@@ -35,8 +35,8 @@ $(document).ready(function() {
 function sendRequestToServer(ricerca, url, container, string) {
   if ($("#input").val() != "") {
     container.html("");
-    $("#movie-select").html('<option value="">All</option>');
-    $("#tv-select").html('<option value="">All</option>');
+    $("#movie-select").html('<option value="">Tutti i generi</option>');
+    $("#tv-select").html('<option value="">Tutti i generi</option>');
     generiFilm = [];
     generiTv = [];
     $("#cercato > span").text(ricerca);
@@ -86,6 +86,9 @@ function stampa(listaOggetti, container, string) {
     } else {
       context.releaseYear = moment(listaOggetti[key].first_air_date, "YYYY-MM-DD").format("YYYY");
     }
+    if (context.trama == "") {
+      context.trama = "Non disponibile";
+    }
     var html = template(context);
     container.append(html);
     getActors(listaOggetti[key].id, string);
@@ -111,13 +114,19 @@ function getActors(id, string) {
     url: "https://api.themoviedb.org/3/"+ string + "/" + id + "/credits",
     method: "GET",
     data: {
-      api_key: "b1d8c49e5a444b10f55f930d8f4ed091",
+      api_key: "b1d8c49e5a444b10f55f930d8f4ed091"
     },
     success: function(risposta) {
-      for (var i = 0; i < 5; i++) {
-        listaAttori += risposta.cast[i].name + ", ";
+      if (risposta.cast != "") {
+        for (var i = 0; i < 5; i++) {
+          if (risposta.cast[i] != undefined) {
+            listaAttori += risposta.cast[i].name + ", ";
+          }
+        }
+        listaAttori = listaAttori.slice(0, listaAttori.length-2);
+      } else {
+        listaAttori = "Non disponibile";
       }
-      listaAttori = listaAttori.slice(0, listaAttori.length-2);
       $("#" + id).find(".cast").append(listaAttori);
     },
     error: function functionName() {
@@ -130,24 +139,28 @@ function getGenres(id, string) {
     url: "https://api.themoviedb.org/3/"+ string + "/" + id,
     method: "GET",
     data: {
-      api_key: "b1d8c49e5a444b10f55f930d8f4ed091",
+      api_key: "b1d8c49e5a444b10f55f930d8f4ed091"
     },
     success: function(risposta) {
-    for (var key in risposta.genres) {
-      generi += risposta.genres[key].name + ", ";
-      if (string == "movie") {
-        if (!generiFilm.includes(risposta.genres[key].name)) {
-          generiFilm.push(risposta.genres[key].name);
-          printGenresinSelect("movie-select", risposta.genres[key].name);
+      if (risposta.genres != "") {
+        for (var key in risposta.genres) {
+          generi += risposta.genres[key].name + ", ";
+          if (string == "movie") {
+            if (!generiFilm.includes(risposta.genres[key].name)) {
+              generiFilm.push(risposta.genres[key].name);
+              printGenresinSelect("movie-select", risposta.genres[key].name);
+            }
+          } else {
+            if (!generiTv.includes(risposta.genres[key].name)) {
+              generiTv.push(risposta.genres[key].name);
+              printGenresinSelect("tv-select", risposta.genres[key].name);
+            }
+          }
         }
+        generi = generi.slice(0, generi.length-2);
       } else {
-        if (!generiTv.includes(risposta.genres[key].name)) {
-          generiTv.push(risposta.genres[key].name);
-          printGenresinSelect("tv-select", risposta.genres[key].name);
-        }
+        generi = "Non disponibile";
       }
-    }
-      generi = generi.slice(0, generi.length-2);
       $("#" + id).find(".generi").append(generi);
     },
     error: function functionName() {
