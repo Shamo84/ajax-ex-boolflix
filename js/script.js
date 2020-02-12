@@ -1,20 +1,18 @@
 $(document).ready(function() {
-  var moviesUrl = "https://api.themoviedb.org/3/search/movie";
-  var seriesUrl = "https://api.themoviedb.org/3/search/tv";
   var movieContainer = $(".movie.container");
   var seriesContainer = $(".tvseries.container");
 
   $(document).on("click", "#search", function() {
     var ricerca = $("#input").val();
-    sendRequestToServer(ricerca, moviesUrl, movieContainer, "movie");
-    sendRequestToServer(ricerca, seriesUrl, seriesContainer, "tv");
+    sendRequestToServer(ricerca, movieContainer, "movie");
+    sendRequestToServer(ricerca, seriesContainer, "tv");
     $("#input").val("");
   });
   $("#input").keyup(function(event) {
     if (event.which == 13) {
       var ricerca = $("#input").val();
-      sendRequestToServer(ricerca, moviesUrl, movieContainer, "movie");
-      sendRequestToServer(ricerca, seriesUrl, seriesContainer, "tv");
+      sendRequestToServer(ricerca, movieContainer, "movie");
+      sendRequestToServer(ricerca, seriesContainer, "tv");
       $("#input").val("");
     }
   });
@@ -32,7 +30,8 @@ $(document).ready(function() {
   })
 });
 
-function sendRequestToServer(ricerca, url, container, string) {
+// CHIEDI ALL'API LA LISTA DEI FILM
+function sendRequestToServer(ricerca, container, string) {
   if ($("#input").val() != "") {
     container.html("");
     $("#movie-select").html('<option value="">Tutti i generi</option>');
@@ -42,7 +41,7 @@ function sendRequestToServer(ricerca, url, container, string) {
     $("#cercato > span").text(ricerca);
     $("#cercato").removeClass("hidden");
     $.ajax({
-      url: url,
+      url: "https://api.themoviedb.org/3/search/" + string,
       method: "GET",
       data: {
         api_key: "b1d8c49e5a444b10f55f930d8f4ed091",
@@ -66,6 +65,7 @@ function sendRequestToServer(ricerca, url, container, string) {
   }
 }
 
+// STAMPA TRAMITE HANDLEBARS LA LISTA DI FILM
 function stampa(listaOggetti, container, string) {
   var source = $("#entry-template").html();
   var template = Handlebars.compile(source);
@@ -96,6 +96,7 @@ function stampa(listaOggetti, container, string) {
   }
 }
 
+// TRASFORMA IL VOTO IN STELLE
 function printStars(voto) {
   var starsNumber = Math.ceil(voto / 2);
   var stars = "";
@@ -108,6 +109,7 @@ function printStars(voto) {
   return stars;
 }
 
+// PRENDI E STAMPA LA LISTA ATTORI DALL'API RELATIVA
 function getActors(id, string) {
   var listaAttori = "";
   $.ajax({
@@ -133,6 +135,8 @@ function getActors(id, string) {
     }
   })
 }
+
+// PRENDI LA LISTA GENERI DALL'API RELATIVA
 function getGenres(id, string) {
   var generi = "";
   $.ajax({
@@ -168,6 +172,7 @@ function getGenres(id, string) {
   })
 }
 
+// AGGIUNGI UN NUOVO GENERE AL SELECT
 function printGenresinSelect(string, name) {
   var source = $("#entry-template-2").html();
   var template = Handlebars.compile(source);
@@ -178,6 +183,7 @@ function printGenresinSelect(string, name) {
   $("#" + string).append(html);
 }
 
+// MOSTRA SOLO FILM CHE HANNO QUEL GENERE
 function filtraPerGenere(string, select) {
   var choice = $(select).val();
   $(string).children(".show").each(function() {

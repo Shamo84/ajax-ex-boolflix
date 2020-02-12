@@ -10,24 +10,29 @@
         <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
+      <!-- HEADER -->
       <header>
         <h1>BoolFlix</h1>
         <input id="input" type="text" name="input" value="" placeholder="Inserisci un titolo">
         <button id="search" type="button" name="button">Cerca</button>
       </header>
+      <!-- MAIN -->
       <main>
         <h3 id="cercato" class="hidden">hai cercato: "<span></span>"</h3>
+        <!-- SEZIONE MOVIE -->
         <div>
           <h2 class="movie-title hidden">Movies</h2>
           <select class="hidden" id="movie-select" name="select"></select>
           <div class="movie container"></div>
         </div>
+        <!-- SEZIONE SERIE TV -->
         <div>
           <h2 class="tvseries-title hidden">TV Series</h2>
           <select class="hidden" id="tv-select" name="select"></select>
           <div class="tvseries container"></div>
         </div>
       </main>
+      <!-- TEMPLATE #1 -->
       <script id="entry-template" class="" type="text/x-handlebars-template">
         <div class="show" id="{{id}}">
           <div class="poster" >
@@ -45,6 +50,7 @@
           </ul>
         </div>
       </script>
+      <!-- TEMPLATE #2 -->
       <script id="entry-template-2" class="" type="text/x-handlebars-template">
         <option value="{{genere}}">{{genere}}</option>
       </script>

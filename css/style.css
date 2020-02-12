@@ -12,6 +12,7 @@ body {
   min-width: 1000px;
 }
 
+/* HEADER */
 header {
   position: fixed;
   top: 0;
@@ -53,7 +54,7 @@ h1 {
   font-size: 20px;
   border-radius: 8px;
 }
-
+/* MAIN */
 main {
   width: 100%;
   max-width: 1400px;
@@ -79,6 +80,7 @@ ul {
   list-style: none;
 }
 div.show {
+  min-height: 340px;
   margin: 10px 5px;
   width: calc(25% - 10px);
   position: relative;
